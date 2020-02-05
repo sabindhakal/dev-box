@@ -1,0 +1,33 @@
+---
+# https://github.com/leucos/ansible-percona/blob/master/tasks/percona.yml
+- name: Add percona key
+  apt_key:
+    keyserver: keys.gnupg.net
+    id: 8507EFA5
+
+- name: Add percona repositories
+  apt_repository:
+    repo: 'deb http://repo.percona.com/apt {{ ansible_distribution_release }} main'
+    state: present
+
+# debconf-get-selections | grep percona
+- name: Sets root password
+  debconf:
+    name: "percona-server-server-{{ percona_version }}"
+    question: "{{ item }}"
+    value: "{{ percona_root_password }}"
+    vtype: 'password'
+  changed_when: false
+  with_items:
+    - 'percona-server-server-{{ percona_version }}/root-pass'
+    - 'percona-server-server-{{ percona_version }}/re-root-pass'
+
+- name: Install percona-server
+  apt:
+    pkg: "percona-server-server-{{ percona_version }}"
+    state: present
+
+- name: Install percona-client
+  apt:
+    pkg: "percona-server-client-{{ percona_version }}"
+    state: present

@@ -1,0 +1,21 @@
+---
+
+# - name: Ensure erlang is installed
+#   package:
+#     name: erlang
+#     state: present
+
+- name: Download RabbitMQ package
+  get_url:
+    url: "{{ rabbitmq_deb_url }}"
+    dest: "/tmp/{{ rabbitmq_deb }}"
+
+- name: Ensure RabbitMQ is insatlled
+  apt:
+    deb: "/tmp/{{ rabbitmq_deb }}"
+    state: present
+
+- name: Enables the rabbitmq_management plugin
+  rabbitmq_plugin:
+    names: rabbitmq_management
+    state: enabled

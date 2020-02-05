@@ -1,0 +1,8 @@
+---
+
+- name: Install awscli
+  apt:
+    name: 
+        - awscli
+        # - terraform
+    state: present

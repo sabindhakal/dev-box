@@ -1,0 +1,43 @@
+---
+
+- name: Generate the server locale
+  locale_gen: name={{ locale }} state=present
+
+- name: Set locale
+  lineinfile: dest=/etc/default/locale regexp='^LANG' line='LANG={{ locale }}'
+
+- name: Reload locale
+  raw: . /etc/default/locale
+
+- name: Intall tools (vim, zip, crul, mc)
+  apt:
+    name: 
+        - vim
+        - zip
+        - curl
+        - mc
+        - ntpdate
+        - sysstat
+    state: present
+
+# sed -i 's/ENABLED="false"/ENABLED="true"/' /etc/default/sysstat
+- name: Enable sysstat
+  lineinfile: dest=/etc/default/sysstat regexp='^ENABLED' line='ENABLED="true"'
+
+# echo "1 3 * * * root /usr/sbin/ntpdate -s pool.ntp.org" >> /etc/crontab
+- name: Creates a cron file under /etc/cron.d/ntpdate-autoupdate 
+  cron:
+    name: ntpdate autoupdate
+    minute: 1
+    hour: 3
+    user: root
+    job: "/usr/sbin/ntpdate -s pool.ntp.org"
+    cron_file: ntpdate-autoupdate
+
+- name: Remove not required pacakages (nscd bind9)
+  apt:
+    name: 
+        - nscd
+        - bind9
+        - ntp
+    state: absent

@@ -1,0 +1,13 @@
+---
+# https://www.youtube.com/playlist?list=PLK9afJhRxzRKABo7tXiBJ6aeHKGJnwVh7
+-  hosts: all
+   become: true
+   roles:
+      - nginx
+      - general
+      - awscli
+   #  - php
+   #  - php-fpm
+   #  - supervisor
+   #  - percona
+   #  - rabbitmq
