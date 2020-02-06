@@ -18,6 +18,7 @@
         - mc
         - ntpdate
         - sysstat
+        - net-tools
     state: present
 
 # sed -i 's/ENABLED="false"/ENABLED="true"/' /etc/default/sysstat

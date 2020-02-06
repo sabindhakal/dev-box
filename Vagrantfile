@@ -18,7 +18,7 @@ Vagrant.configure("2") do |config|
     config.vm.synced_folder "../../workspace", "/workspace", type: "nfs"
 
     config.vm.provider "virtualbox" do |vb|
-        vb.customize ["modifyvm", :id, "--memory", "1024"]
+        vb.customize ["modifyvm", :id, "--memory", "2048"]
         vb.name = "devop-box"
     end
 

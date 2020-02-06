@@ -7,7 +7,7 @@
       - general
       - awscli
       - terraform
-   #  - php
+      - php
    #  - php-fpm
    #  - supervisor
    #  - percona
