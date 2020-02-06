@@ -6,6 +6,7 @@
       - nginx
       - general
       - awscli
+      - terraform
    #  - php
    #  - php-fpm
    #  - supervisor
