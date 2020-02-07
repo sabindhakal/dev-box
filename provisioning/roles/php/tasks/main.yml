@@ -35,17 +35,16 @@
 
 - name: Intall php{{ php.version }} extensions
   apt:
-    name: php{{ php.version }}-{{ item }}
+    name: 
+      - php{{ php.version }}-json
+      - php{{ php.version }}-pdo
+      - php{{ php.version }}-mysql
+      - php{{ php.version }}-zip
+      - php{{ php.version }}-gd
+      - php{{ php.version }}-mbstring
+      - php{{ php.version }}-curl
+      - php{{ php.version }}-xml
+      - php{{ php.version }}-bcmath
+      - php{{ php.version }}-opcache
+      - php{{ php.version }}-intl
     state: present
-  with_items:
-    - json
-    - pdo
-    - mysql
-    - zip
-    - gd
-    - mbstring
-    - curl
-    - xml
-    - bcmath
-    - opcache
-    - intl

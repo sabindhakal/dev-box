@@ -1,15 +1,5 @@
 ---
 
-# Remove apache if installed
-- name: Remove apache2
-  apt:
-    name: 
-      - apache2
-      - apache2-common
-      - apache2-data 
-      - apache2-utils
-    state: absent 
-
 - name: Install nginx
   apt:
     name: 
