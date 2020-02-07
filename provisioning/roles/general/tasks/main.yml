@@ -19,6 +19,8 @@
         - ntpdate
         - sysstat
         - net-tools
+        - tcpdump
+        - wireshark
     state: present
 
 # sed -i 's/ENABLED="false"/ENABLED="true"/' /etc/default/sysstat
