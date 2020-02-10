@@ -15,7 +15,7 @@ Vagrant.configure("2") do |config|
     end
 
     ## Sync folder
-    config.vm.synced_folder "../../workspace", "/workspace", type: "nfs"
+    config.vm.synced_folder "../rojfancy", "/workspace", type: "nfs"
 
     config.vm.provider "virtualbox" do |vb|
         vb.customize ["modifyvm", :id, "--memory", "2048"]

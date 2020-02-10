@@ -3,13 +3,12 @@
 -  hosts: all
    become: true
    roles:
+      - general
       - php
       - nginx
       - terraform
       - awscli
-      - general
    # - php-fpm
    #  - supervisor
    #  - percona
    #  - rabbitmq
-      - cleanup
