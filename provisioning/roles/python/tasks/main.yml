@@ -1,0 +1,16 @@
+---
+
+- name: Install python
+  apt:
+    name: 
+        - python
+        - python-pip
+        - python-setuptools
+    state: present
+
+- name: Install pip packages
+  pip:
+    name: 
+      - boto3
+      - click
+    state: present

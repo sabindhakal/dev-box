@@ -3,6 +3,7 @@
 -  hosts: all
    become: true
    roles:
+      - python
       - general
       - php
       - nginx
