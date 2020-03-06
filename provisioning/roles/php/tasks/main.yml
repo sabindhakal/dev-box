@@ -47,4 +47,5 @@
       - php{{ php.version }}-bcmath
       - php{{ php.version }}-opcache
       - php{{ php.version }}-intl
+      - php{{ php.version }}-zip
     state: present

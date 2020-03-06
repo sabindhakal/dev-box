@@ -8,6 +8,8 @@
       - nginx
       - terraform
       - awscli
+      - docker
+      - golang
    # - php-fpm
    #  - supervisor
    #  - percona
