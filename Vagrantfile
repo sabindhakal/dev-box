@@ -5,7 +5,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "devop-box" do |devbox|
     devbox.vm.box = "debian/stretch64"
 
-    config.vm.network "forwarded_port", guest: 80, host: 8585
+    config.vm.network "forwarded_port", guest: 8081, host: 8081
 
     config.vm.network "private_network", ip: "192.168.33.55"
 
