@@ -21,6 +21,9 @@
         - net-tools
         - tcpdump
         - wireshark
+        - tshark
+        - jq
+        - graphviz
     state: present
 
 # sed -i 's/ENABLED="false"/ENABLED="true"/' /etc/default/sysstat
