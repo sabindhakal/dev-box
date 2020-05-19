@@ -5,12 +5,13 @@
    roles:
       - python
       - general
-      - php
-      - nginx
+      # - php
+      # - nginx
       - terraform
       - awscli
-      - docker
+      # - docker
       - golang
+      - i3
    # - php-fpm
    #  - supervisor
    #  - percona

@@ -3,7 +3,12 @@
 
 Vagrant.configure("2") do |config|
   config.vm.define "devop-box" do |devbox|
-    devbox.vm.box = "debian/stretch64"
+    devbox.vm.box = "ubuntu/trusty64"
+
+    config.vm.provider "virtualbox" do |vb|
+      # Display the VirtualBox GUI when booting the machine
+      vb.gui = true
+    end
 
     config.vm.network "forwarded_port", guest: 8081, host: 8081
 
@@ -15,8 +20,6 @@ Vagrant.configure("2") do |config|
     end
 
     ## Sync folder
-    config.vm.synced_folder "../../workspace/pfone_terraform/", "/workspace", type: "nfs"
-
     config.vm.provider "virtualbox" do |vb|
         vb.customize ["modifyvm", :id, "--memory", "2048"]
         vb.name = "devop-box"

@@ -1,0 +1,9 @@
+---
+# Install gui-tools and i3
+- name: Install i3 & gui-tools
+  apt:
+    name: 
+      - lubuntu-desktop
+      - i3
+      - dmenu
+    state: present
