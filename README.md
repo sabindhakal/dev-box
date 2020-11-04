@@ -1,0 +1,4 @@
+## Development box
+
+###
+    vagrant up

@@ -3,7 +3,7 @@
 
 Vagrant.configure("2") do |config|
   config.vm.define "devop-box" do |devbox|
-    devbox.vm.box = "ubuntu/trusty64"
+    devbox.vm.box = "ubuntu/focal64"
 
     config.vm.provider "virtualbox" do |vb|
       # Display the VirtualBox GUI when booting the machine
@@ -21,7 +21,7 @@ Vagrant.configure("2") do |config|
 
     ## Sync folder
     config.vm.provider "virtualbox" do |vb|
-        vb.customize ["modifyvm", :id, "--memory", "2048"]
+        vb.customize ["modifyvm", :id, "--memory", "4048"]
         vb.name = "devop-box"
     end
 
