@@ -1,0 +1,43 @@
+version: "3.8"
+services:
+  php:
+    build: ./docker/php
+    container_name: ${APP_NAME}-php
+    restart: always
+    volumes:
+      - .:/home/wwwroot/mytoys
+      - ./docker/php/conf/php.ini:/etc/php/7.4/php.ini
+      - ./docker/php/conf/php-fpm-pool.conf:/etc/php/7.4/pool.d/www.conf
+    ports:
+      - 9001:9000
+
+  apache:
+    build: ./docker/apache
+    container_name: ${APP_NAME}-apache
+    restart: always
+    volumes:
+      - ./docker/apache/vhosts:/etc/apache2/sites-enabled
+      - .:/home/wwwroot/mytoys
+    ports:
+      - 8000:80
+    depends_on:
+      - php
+
+  node:
+    build: ./docker/node
+    container_name: ${APP_NAME}-node
+    restart: unless-stopped
+    volumes:
+      - .:/home/wwwroot/mytoys
+    ports:
+      - 3000:3000
+
+  awscli:
+    image: amazon/aws-cli:latest
+    container_name: ${APP_NAME}-aws-cli
+    restart: always
+
+  terraform:
+    image: hashicorp/terraform:full
+    container_name: ${APP_NAME}-terraform
+    restart: always

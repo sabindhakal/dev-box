@@ -1,0 +1,32 @@
+FROM php:7.4-fpm
+
+COPY . /home/wwwroot/mytoys
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends vim curl debconf subversion git apt-transport-https apt-utils \
+    build-essential locales acl mailutils wget zip unzip \
+    gnupg gnupg1 gnupg2
+RUN docker-php-ext-install pdo pdo_mysql
+
+RUN pecl install redis-5.1.1 \
+    && pecl install xdebug-2.8.1 \
+    && docker-php-ext-enable redis xdebug \
+    && echo "xdebug.remote_enable=on" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "xdebug.remote_autostart=off" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "xdebug.remote_port=9001" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "xdebug.remote_handler=dbgp" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "xdebug.remote_connect_back=0" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "xdebug.remote_host=192.168.8.116" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+
+RUN curl -sSk https://getcomposer.org/installer | php -- --disable-tls && \
+   mv composer.phar /usr/local/bin/composer
+
+RUN groupadd dev -g 999
+RUN useradd dev -g dev -d /home/dev -m
+
+RUN rm -rf /var/lib/apt/lists/*
+
+WORKDIR /home/wwwroot/mytoys
+
+EXPOSE 9000
+CMD ["php-fpm"]
