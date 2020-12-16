@@ -10,7 +10,7 @@ Vagrant.configure("2") do |config|
       # vb.gui = true
     end
 
-    config.vm.network "forwarded_port", guest: 8081, host: 8081
+   ## config.vm.network "forwarded_port", guest: 8081, host: 8081
 
     config.vm.network "private_network", ip: "192.168.33.55"
 
@@ -20,7 +20,7 @@ Vagrant.configure("2") do |config|
     end
 
     ## Sync folder
-    config.vm.synced_folder "/Users/sdhakal/Developer", "/home/vagrant/developer"
+    config.vm.synced_folder "C:/workspace", "/home/vagrant/developer"
 
     ## 
     config.vm.provider "virtualbox" do |vb|
@@ -28,7 +28,7 @@ Vagrant.configure("2") do |config|
         vb.name = "devop-box"
     end
 
-    config.vm.provision "file", source: "~/.vagrant.d/insecure_private_key", destination: "/home/vagrant/.ssh/id_rsa"
+    config.vm.provision "file", source: "C:/Users/ssteil/.vagrant.d/insecure_private_key", destination: "/home/vagrant/.ssh/id_rsa"
 
   end
 end
