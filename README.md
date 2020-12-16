@@ -9,6 +9,13 @@
 ### Check the dependencies you need
 You can comment in or out (with  # symbol) the dependencies you will need on your virtual box by commenting provisioning/playbook.yml
 
+### Change Vagrantfile
+* change sync folder path: e.g. 
+
+```
+  config.vm.synced_folder "C:/workspace", "/home/vagrant/developer"
+```
+
 ### Vagrant operations
 
 #### Start the vagrant box
@@ -16,6 +23,14 @@ You can comment in or out (with  # symbol) the dependencies you will need on you
 ```
 vagrant up
 ```
+
+### Provision vagrant (only once for windows)
+
+```
+cd /cygdrive/c/workspace/dev-box
+ansible-playbook -i .vagrant/provisioners/ansible/inventory/vagrant_ansible_inventory provisioning/playbook.yml
+```
+
 #### Shutdown the vagrant box
 
 ```

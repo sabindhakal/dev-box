@@ -9,7 +9,7 @@
 - name: Reload locale
   raw: . /etc/default/locale
 
-- name: Intall tools (vim, zip, crul, mc)
+- name: Intall tools (vim, zip, curl, mc)
   apt:
     name: 
         - vim
