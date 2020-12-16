@@ -22,3 +22,7 @@ rabbitmq_deb_url: "https://packagecloud.io/rabbitmq/rabbitmq-server/packages/{{ 
 
 # terraform
 terraform_version: "0.12.25"
+
+# nodejs
+NODEJS_VERSION: "10"
+ansible_distribution_release: "xenial" #trusty

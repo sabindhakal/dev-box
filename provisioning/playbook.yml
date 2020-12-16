@@ -9,10 +9,11 @@
       # - nginx
       - terraform
       - awscli
+      - nodejs
       # - docker
-      - golang
-      - i3
-   # - php-fpm
-   #  - supervisor
-   #  - percona
-   #  - rabbitmq
+      # - golang
+      # - i3
+      # - php-fpm
+      # - supervisor
+      # - percona
+      # - rabbitmq
