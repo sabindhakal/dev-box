@@ -1,8 +1,10 @@
 ## Development box
 
 ### Install dependencies 
-* [VirtualBox] (https://www.virtualbox.org/wiki/Downloads)
-* [Vagrant] (https://www.vagrantup.com/downloads.html)
+* [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
+* [Vagrant](https://www.vagrantup.com/downloads.html)
+* [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
+* [Ansible Widows Install/Upgrade](https://geekflare.com/de/ansible-installation-windows/) if already installed re-run install script and follow instructions
 
 ### Check the dependencies you need
 You can comment in or out (with  # symbol) the dependencies you will need on your virtual box by commenting provisioning/playbook.yml

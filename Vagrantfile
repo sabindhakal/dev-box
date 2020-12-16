@@ -3,11 +3,11 @@
 
 Vagrant.configure("2") do |config|
   config.vm.define "devop-box" do |devbox|
-    devbox.vm.box = "ubuntu/focal64"
+    devbox.vm.box = "ubuntu/bionic64"
 
     config.vm.provider "virtualbox" do |vb|
       # Display the VirtualBox GUI when booting the machine
-      vb.gui = true
+      # vb.gui = true
     end
 
     config.vm.network "forwarded_port", guest: 8081, host: 8081
@@ -20,6 +20,9 @@ Vagrant.configure("2") do |config|
     end
 
     ## Sync folder
+    config.vm.synced_folder "/Users/sdhakal/Developer", "/home/vagrant/developer"
+
+    ## 
     config.vm.provider "virtualbox" do |vb|
         vb.customize ["modifyvm", :id, "--memory", "4048"]
         vb.name = "devop-box"
