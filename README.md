@@ -34,3 +34,8 @@ vagrant snapshot save SNAPSHOT_NAME # Saves a snapshot
 vagrant snapshot restore SNAPSHOT_NAME # Restores a snapshot
 vagrant snapshot delete SNAPSHOT_NAME # Deletes a snapshot
 ```
+
+--- 
+## Useful recommendations
+
+* [Hyper](https://hyper.is/)  terminal windows users
